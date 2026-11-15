@@ -1,0 +1,25 @@
+name: Task
+description: Work that a user of the software does not notice
+type: Task
+body:
+  - type: textarea
+    id: what-to-do
+    attributes:
+      label: What to do
+      description: The work to carry out.
+    validations:
+      required: true
+  - type: textarea
+    id: done-when
+    attributes:
+      label: Done when
+      description: The criterion that tells the work is complete.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Background that helps whoever does the work.
+    validations:
+      required: false

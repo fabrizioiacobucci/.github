@@ -1,0 +1,46 @@
+name: Bug
+description: Something a user of the software notices as broken
+type: Bug
+body:
+  - type: textarea
+    id: what-happens
+    attributes:
+      label: What happens
+      description: The behaviour you observe.
+    validations:
+      required: true
+  - type: textarea
+    id: what-should-happen
+    attributes:
+      label: What should happen
+      description: The behaviour you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to reproduce
+      description: The steps that lead to the problem. Attach logs or traces if you have them.
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: input
+    id: observed-in
+    attributes:
+      label: Observed in
+      description: A release (vX.Y.Z), or a branch and commit.
+    validations:
+      required: true
+  - type: textarea
+    id: approval
+    attributes:
+      label: Approval
+      description: Leave the names empty. They are filled when the issue moves to Ready, with names from the Executor options.
+      value: |
+        Prepared by:
+        Approved by:
+    validations:
+      required: false
