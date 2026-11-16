@@ -37,7 +37,7 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
 
 - Who: whoever holds the triage mandate (person or agent)
 - Does: takes an issue with empty `Stage` and picks one outcome
-  - Accept: fixes the type if needed, sets Priority, sets `Stage` to Accepted. A Task with a clear "Done when" goes straight to Ready
+  - Accept: fixes the type if needed, sets Priority by the Priority criteria, sets `Stage` to Accepted. A Task with a clear "Done when" goes straight to Ready
   - Reject: closes as "not planned", with the reason in a comment
   - Duplicate: copies anything new into a comment on the surviving issue, then closes it through REST with `state_reason` duplicate and `duplicate_issue_id` set to the surviving issue. The more complete issue survives
   - Suspend: sets `Stage` to Needs Info and asks the question in a comment
@@ -145,6 +145,17 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
 | Task | Its "Done when" section is clear. Set directly at triage, with no Approver |
 
 - A Bug neither reproduced nor backed by evidence goes to Waiting, with a question to the reporter. With no answer it is closed as "not planned"
+
+## Priority criteria
+
+| Priority | An issue gets this value when |
+|----------|-------------------------------|
+| Urgent | It stops the use of a shipped version or a workflow step with no workaround, or it risks data loss or security |
+| High | It blocks another open issue, or it degrades a main use or a workflow step with only a costly workaround |
+| Medium | It has a cheap workaround, or it is planned work a version goal needs |
+| Low | It is cosmetic or optional: nothing is lost if it waits for a later version |
+
+- Take the highest value whose criterion holds (D36)
 
 ## Rules
 

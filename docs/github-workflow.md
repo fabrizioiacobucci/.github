@@ -53,6 +53,7 @@ Version 0.1 holds the frozen core (D31) on a REST-only channel (D10). Text under
 | D33 | Leaving Waiting restores the previous `Stage` from `Executor`: In Progress if it is set, Accepted if it is empty. This holds because Waiting is entered only from In Progress (step 6, `Executor` set) or from Accepted (step 2 and the Bug Ready criterion, `Executor` empty). Any new way into Waiting must update this rule |
 | D34 | Head branches are deleted automatically after the merge (repository setting "Automatically delete head branches") |
 | D35 | The ids of issue fields and their options live in the standard's configuration in the `.github` repository (D24): REST cannot list field definitions |
+| D36 | `Priority` measures the cost of waiting, not the size of the work. The value is chosen by the "Priority criteria" in `github-workflow-steps.md`: the highest value whose criterion holds. It orders issues inside a milestone only, never across milestones (D21) |
 
 ## Platform constraints
 
