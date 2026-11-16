@@ -1,0 +1,17 @@
+# Issue fields of the account (D35).
+# REST cannot list field definitions: each id is read from a value already set on an issue,
+# with `gh api repos/<owner>/<repo>/issues/<n>/issue-field-values`.
+# REST writes a value with the field id and the option name.
+fields:
+  Stage:
+    id: 49889687
+    options: [Needs Info, Accepted, Ready, In Progress, In Review, Waiting]
+  Priority:
+    id: 49952289
+    options: [Urgent, High, Medium, Low]
+  Executor:
+    id: 49952328
+    options: [Owner, Agent 1, Agent 2]
+  Reviewed by:
+    id: 49952413
+    options: [Owner, Agent 1, Agent 2]
