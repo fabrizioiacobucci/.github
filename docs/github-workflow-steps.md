@@ -44,7 +44,8 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
 - Leaves untouched: milestone, assignee, Approval section
 - Result: the issue is accepted, closed, or waiting for clarification
 - A wanted Task with an unclear "Done when" is Accepted, not Ready: the triager writes the criterion, or the issue goes to Waiting until the author answers. Needs Info is for an issue that cannot be decided at all; Waiting is for work already wanted
-- Triage queue, oldest first: open issues with empty `Stage`, then Needs Info issues commented since they entered it. Until a script exists: people read it from the board (the column with no value and the Needs Info column); agents list the open issues through REST, which returns their field values, and filter locally
+- Priority reassessment: on an accepted issue with a `Priority fact:` comment, the triager applies the Priority criteria again and leaves `Stage` untouched
+- Triage queue, oldest first: open issues with empty `Stage`, then Needs Info issues commented since they entered it, then open issues whose last `Priority fact:` comment has no later `Priority reassessed:` comment. Until a script exists: people read it from the board (the column with no value and the Needs Info column); agents list the open issues through REST, which returns their field values, and filter locally
 
 ### 3. Version opening
 
@@ -66,6 +67,7 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
   - Approval: the Approver signs and sets `Stage` to Ready. This act closes preparation
 - Leaves untouched: assignee
 - Result: the issue is Ready, with or without a milestone
+- Urgent issues: the planner moves every open Urgent issue, and its open blockers, directly or through other open issues, into the workable milestone (D21), at any `Stage`. With no open milestone, the planner first opens one (step 3). Agents find them by listing the open issues through REST and filtering locally
 
 ### 5. Pick-up
 
@@ -150,14 +152,16 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
 
 | Priority | Criterion, read top to bottom: the first that holds gives the value |
 |----------|---------------------------------------------------------------------|
-| Urgent | A shipped version cannot be used at all, or a workflow step cannot be completed, with no workaround; or data is lost in normal use; or a security flaw has a known way to be exploited |
+| Urgent | A shipped version cannot be used at all, or a step of this standard (steps 1 to 9) cannot be completed, with no workaround; or data is lost in normal use; or a security flaw has a known way to be exploited |
 | High | An existing function cannot be used, with no workaround |
-| Medium | What the issue fixes or adds is reached today only through a workaround; or data loss or a security flaw is possible, with no normal-use path and no known exploit |
+| Medium | What the issue fixes or adds is reached today only through a workaround; or what it adds has a concrete use named in the issue (who needs it and for what); or data loss or a security flaw is possible, with no normal-use path and no known exploit |
 | Low | Any other issue |
 
-- A workaround counts only if it is written in the issue or in a comment
+- A workaround counts only if it is written in the issue or in a comment (structured datum: #15)
 - Triage sets the value from the issue alone: "blocked by" dependencies never change it
-- Rank: a blocker ranks with the highest Priority among itself and the open issues it blocks, directly or through other open issues. Read from the dependencies when the order is used (steps 3 and 5), never written to the field (D36)
+- Reassessment: whoever finds that a fact read by the criteria has changed (a workaround written or no longer working, an exploit known, data loss in normal use, a use named) writes it in a comment starting with `Priority fact:`. The triager applies the criteria again, writes the value, and answers with a comment starting with `Priority reassessed:` and the value, changed or not (step 2)
+- Urgent: an open Urgent issue and its open blockers, directly or through other open issues, sit in the workable milestone (D21). The planner moves them there at any `Stage` (step 4)
+- Rank: a blocker ranks with the highest Priority among itself and every open issue it blocks, directly or through other open issues, each counted once (D36). Walk `/issues/<n>/dependencies/blocking` from the issue and skip any issue already visited: a cycle adds nothing. Read when the order is used (steps 3 and 5), never written to the field
 
 ## Rules
 
