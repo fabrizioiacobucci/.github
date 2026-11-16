@@ -54,7 +54,7 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
 - Result: an open milestone exists, ready to receive issues
 - A milestone may be opened well in advance: it is the only placeholder for a future version. Its issues become startable only when it is the next release
 - A version that can be named gets its milestone at once, even with a provisional due date
-- A group of issues with no version yet is tied together by a theme label. With nothing known, issues stay in the backlog and are chosen by Priority when a milestone is created
+- A group of issues with no version yet is tied together by a theme label. With nothing known, issues stay in the backlog and are chosen by Priority as ranked by D36 when a milestone is created
 
 ### 4. Planning
 
@@ -148,20 +148,22 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
 
 ## Priority criteria
 
-| Priority | An issue gets this value when |
-|----------|-------------------------------|
-| Urgent | It stops the use of a shipped version or a workflow step with no workaround, or it risks data loss or security |
-| High | It blocks another open issue, or it degrades a main use or a workflow step with only a costly workaround |
-| Medium | It has a cheap workaround, or it is planned work a version goal needs |
-| Low | It is cosmetic or optional: nothing is lost if it waits for a later version |
+| Priority | Criterion, read top to bottom: the first that holds gives the value |
+|----------|---------------------------------------------------------------------|
+| Urgent | A shipped version cannot be used at all, or a workflow step cannot be completed, with no workaround; or data is lost in normal use; or a security flaw has a known way to be exploited |
+| High | An existing function cannot be used, with no workaround |
+| Medium | What the issue fixes or adds is reached today only through a workaround; or data loss or a security flaw is possible, with no normal-use path and no known exploit |
+| Low | Any other issue |
 
-- Take the highest value whose criterion holds (D36)
+- A workaround counts only if it is written in the issue or in a comment
+- Triage sets the value from the issue alone: "blocked by" dependencies never change it
+- Rank: a blocker ranks with the highest Priority among itself and the open issues it blocks, directly or through other open issues. Read from the dependencies when the order is used (steps 3 and 5), never written to the field (D36)
 
 ## Rules
 
 - Creating and accepting are two distinct acts, even for the same actor. Whoever creates does not set `Stage`; with a triage mandate, triage is a separate, declared act
 - No draft items in the Project: every piece of work is born as an issue in a repository
-- Priority is mandatory for every accepted issue. Startable issues are taken by nearest milestone due date first, then by highest priority
+- Priority is mandatory for every accepted issue. Startable issues are taken by nearest milestone due date first, then by highest Priority as ranked by D36
 - Board views filter on open issues (`is:open`): a closed issue keeps its last `Stage` value
 - Abandoned work: the issue goes back to Ready; assignee and `Executor` are cleared
 - Leftovers at release: an unfinished issue that is In Progress or In Review goes back to Ready, with assignee and `Executor` cleared; any other keeps its `Stage`. All move to the next milestone or to none
