@@ -53,6 +53,7 @@ Version 0.1 holds the frozen core (D31) on a REST-only channel (D10). Text under
 | D33 | Leaving Waiting restores the previous `Stage` from `Executor`: In Progress if it is set, Accepted if it is empty. This holds because Waiting is entered only from In Progress (step 6, `Executor` set) or from Accepted (step 2 and the Bug Ready criterion, `Executor` empty). Any new way into Waiting must update this rule |
 | D34 | Head branches are deleted automatically after the merge (repository setting "Automatically delete head branches") |
 | D35 | The ids of issue fields and their options live in the standard's configuration in the `.github` repository (D24): REST cannot list field definitions |
+| D36 | `Priority` measures the cost of waiting, not the size of the work. Triage sets it by the "Priority criteria" in `github-workflow-steps.md`, which give exactly one value to every issue. It orders startable issues after the milestone order of D21, and backlog issues when a milestone is created (step 3). Limits, open in #17: Urgent does not move an issue across milestones, and a blocking issue keeps its own `Priority`, whatever it blocks |
 
 ## Platform constraints
 

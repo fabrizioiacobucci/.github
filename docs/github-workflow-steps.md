@@ -37,7 +37,7 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
 
 - Who: whoever holds the triage mandate (person or agent)
 - Does: takes an issue with empty `Stage` and picks one outcome
-  - Accept: fixes the type if needed, sets Priority, sets `Stage` to Accepted. A Task with a clear "Done when" goes straight to Ready
+  - Accept: fixes the type if needed, sets Priority by the Priority criteria, sets `Stage` to Accepted. A Task with a clear "Done when" goes straight to Ready
   - Reject: closes as "not planned", with the reason in a comment
   - Duplicate: copies anything new into a comment on the surviving issue, then closes it through REST with `state_reason` duplicate and `duplicate_issue_id` set to the surviving issue. The more complete issue survives
   - Suspend: sets `Stage` to Needs Info and asks the question in a comment
@@ -145,6 +145,19 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
 | Task | Its "Done when" section is clear. Set directly at triage, with no Approver |
 
 - A Bug neither reproduced nor backed by evidence goes to Waiting, with a question to the reporter. With no answer it is closed as "not planned"
+
+## Priority criteria
+
+| Priority | Criterion, read top to bottom: the first that holds gives the value |
+|----------|---------------------------------------------------------------------|
+| Urgent | A shipped version cannot be used at all, or a step of this standard (steps 1 to 9) cannot be completed, with no workaround; or data is lost in normal use; or a security flaw has a known way to be exploited |
+| High | An existing function cannot be used, with no workaround |
+| Medium | What the issue fixes or adds is reached today only through a workaround; or what it adds has a concrete use named in the issue (who needs it and for what); or data loss or a security flaw is possible, with no normal-use path and no known exploit |
+| Low | Any other issue |
+
+- A workaround counts only if it is written in the issue or in a comment (structured datum: #15)
+- Triage sets the value from the issue alone: "blocked by" dependencies never change it
+- Limits, open in #17: Urgent does not move an issue across milestones (D21 still orders by milestone first), and a blocking issue keeps its own Priority, whatever it blocks (D36)
 
 ## Rules
 
