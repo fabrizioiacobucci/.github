@@ -1,7 +1,7 @@
 # GitHub Workflow Standard: Steps
 
 Version: 0.1 (core)
-Last update: 2026-11-16
+Last update: 2026-11-18
 Decisions and constraints: `github-workflow.md`
 
 Version 0.1 holds the frozen core (D31) on a REST-only channel (D10). Text under "Extensions" is not valid: never apply it until it has been executed (D32).
@@ -112,11 +112,11 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
 
 ### 9. Release
 
-- Who: whoever holds the planning mandate
+- Who: whoever holds the planning mandate. The tag and the release are made by a person: a cloud agent session cannot create releases (REST answers 403), and only a person making them has been executed (D32)
 - Does: once every issue of the milestone is closed or moved as a leftover, in this order
   - Creates in the milestone the Task "Release vX.Y.Z", then accepts it and sets it to Ready with a Priority, as a declared act. From there it goes through steps 5 to 8 like any other. Its pull request, into `develop`, renames the "Unreleased" section of `CHANGELOG.md` to the version with its date and adds a new empty "Unreleased" section above it
-  - Creates the tag `vX.Y.Z` on the commit of that merge
-  - Publishes the release with that changelog section as notes
+  - A person creates the tag `vX.Y.Z` on the commit of that merge
+  - A person publishes the release with that changelog section as notes
   - Closes the milestone
 - Leaves untouched: the closed issues
 - Result: the version is shipped and its milestone is closed
