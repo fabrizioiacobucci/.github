@@ -46,7 +46,7 @@ Version 0.1 holds the frozen core (D31) on a REST-only channel (D10). Text under
 | D26 | `Executor` is a single-select issue field with one option per person and per agent seat. There are at least two agent seats, and an agent started with a clean context signs with a seat different from the one whose work it checks, so that "different" is always visible in the names. It says who is working; the assignee stays the GitHub account. It is set at pick-up by the main session, never by a subagent, and cleared when the issue goes back to Ready or Accepted |
 | D27 | `Reviewed by` is a single-select issue field with the same options as `Executor`, set when the review verdict is given. `Reviewed by` and `Executor` must differ |
 | D28 | Branch model: `develop` is the default branch. An issue's pull request targets `develop` |
-| D29 | A pull request title follows Conventional Commits and ends with the issue number: `<type>(<scope>): <description> (#<issue>)`. Feature → `feat`, Bug → `fix`, Task → `chore`, `refactor`, `docs`, `test`, `build`, `ci` or `perf`; `!` marks a breaking change. The squash commit has exactly that title, with no pull request number: the issue is the single reference. Its body is defined by D37 |
+| D29 | A pull request title follows Conventional Commits and ends with the issue number: `<type>(<scope>): <description> (#<issue>)`. Feature → `feat`, Bug → `fix`, Task → `chore`, `refactor`, `docs`, `test`, `build`, `ci` or `perf`; `!` marks a breaking change. The squash commit carries exactly that title, with no pull request number: the issue is the single reference. Its body is defined by D37 |
 | D30 | Release notes follow Keep a Changelog, in a `CHANGELOG.md` file. Every Feature or Bug pull request adds one line under "Unreleased", in the right category; Tasks add none. At release the section takes the version and the date, and a new empty "Unreleased" section is added above it |
 | D31 | The standard is split into a frozen core and extensions. Core: one repository; issue types, issue forms, `Stage` and `Priority`; steps 1 to 9, with steps 3 and 9 in their simple form on `develop` only; minimal identity (`Executor`, `Reviewed by`, two agent seats, Approver signature). Extensions, not yet valid: parent and child issues; hotfixes and parallel `release/` branches; pull requests from outside contributors; the full periodic check; several repositories |
 | D32 | The core is validated by execution, not by reading: three issues (Feature, Bug, Task) taken from birth to closure in a test repository, with at least one rejection in review and one stop in Waiting. The standard enters its `.github` repository as version 0.1 and every defect becomes an issue handled with the workflow itself. An extension enters the core only after it has been executed at least once |
@@ -101,7 +101,7 @@ Read with `gh api repos/<owner>/<repo>` (D38). The two `squash_merge_commit_*` s
 | `allow_squash_merge` | `true` | Step 8 merges with a squash |
 | `delete_branch_on_merge` | `true` | D34 |
 | `squash_merge_commit_title` | `PR_TITLE` | D29: the form starts from the pull request title, not from the title of the single commit |
-| `squash_merge_commit_message` | `BLANK` | D37: the form does not list the commit messages |
+| `squash_merge_commit_message` | `COMMIT_MESSAGES` | D37: the form lists the commit messages with their `Signed-off-by` lines, so a body left unedited keeps the sign-offs; `BLANK` would drop them |
 
 ## Extensions (not valid)
 
