@@ -1,7 +1,7 @@
 # GitHub Workflow Standard: Steps
 
 Version: 0.1 (core)
-Last update: 2026-11-18
+Last update: 2026-11-19
 Decisions and constraints: `github-workflow.md`
 
 Version 0.1 holds the frozen core (D31) on a REST-only channel (D10). Text under "Extensions" is not valid: never apply it until it has been executed (D32).
@@ -106,7 +106,7 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
 ### 8. Closure
 
 - Who: the Reviewer who approved. The executor never merges its own work
-- Does: merges the pull request with a squash merge, so that one issue is one commit, passing the pull request title as commit title (REST `PUT /repos/<owner>/<repo>/pulls/<n>/merge` with `merge_method` squash and `commit_title`) to keep the pull request number out of it. The issue closes as completed (by hand if the link does not close it) and the branch is deleted automatically (D34)
+- Does: merges the pull request with a squash merge, so that one issue is one commit, passing the pull request title as commit title, to keep the pull request number out of it, and the trailer lines of D37 as commit message (REST `PUT /repos/<owner>/<repo>/pulls/<n>/merge` with `merge_method` squash, `commit_title` and `commit_message`). The issue closes as completed (by hand if the link does not close it) and the branch is deleted automatically (D34)
 - Leaves untouched: `Stage`, `Executor`, `Reviewed by`, which stay on the closed issue as a record
 - Result: the issue is closed as completed, inside its milestone
 
