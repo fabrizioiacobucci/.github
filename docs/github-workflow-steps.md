@@ -63,7 +63,7 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
   - Version: assigns the milestone if the target version is known; otherwise the issue stays in the backlog
   - Order: declares "blocked by" dependencies
   - Preparation: writes the Design section (Feature) or reproduces the defect (Bug)
-  - Approval: the Approver signs and sets `Stage` to Ready. This act closes preparation
+  - Approval: the Approver writes its own line (D22) and sets `Stage` to Ready. This act closes preparation
 - Leaves untouched: assignee
 - Result: the issue is Ready, with or without a milestone
 
