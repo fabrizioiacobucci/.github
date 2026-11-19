@@ -56,7 +56,7 @@ Version 0.1 holds the frozen core (D31) on a REST-only channel (D10). Text under
 | D36 | `Priority` measures the cost of waiting, not the size of the work. Triage sets it by the "Priority criteria" in `github-workflow-steps.md`, which give exactly one value to every issue. It orders startable issues after the milestone order of D21, and backlog issues when a milestone is created (step 3). Limits, open in #17: Urgent does not move an issue across milestones, and a blocking issue keeps its own `Priority`, whatever it blocks |
 | D37 | The squash commit body holds only trailer lines: the distinct `Signed-off-by` and `Co-Authored-By` lines of the commits of the branch, one per line, and nothing else. No commit messages, no `Claude-Session` line. The Reviewer passes it as `commit_message` at the merge (step 8) |
 | D38 | The repository settings the standard needs are listed, with their values, in "Required repository settings". A repository is checked against that table with a single read of `GET /repos/<owner>/<repo>`. A different value is a defect of the repository, reported as an issue |
-| D39 | Branch commits carry the identity of the GitHub account, as author and committer (`user.name` is the account login, `user.email` its email), and are signed off with it (`git commit -s`). The executor sets it in step 6 |
+| D39 | Branch commits carry the identity of the GitHub account, as author and committer (`user.name` is the account login, `user.email` its email), and are signed off with it. Step 6 says how it is set |
 
 ## Platform constraints
 
