@@ -163,7 +163,7 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
 
 - Creating and accepting are two distinct acts, even for the same actor. Whoever creates does not set `Stage`; with a triage mandate, triage is a separate, declared act
 - No draft items in the Project: every piece of work is born as an issue in a repository
-- Priority is mandatory for every accepted issue. Startable issues are taken by nearest milestone due date first, then by highest priority
+- Priority is mandatory for every accepted issue. Startable issues are taken in the order of D21
 - Board views filter on open issues (`is:open`): a closed issue keeps its last `Stage` value
 - Abandoned work: the issue goes back to Ready; assignee and `Executor` are cleared
 - Leftovers at release: an unfinished issue that is In Progress or In Review goes back to Ready, with assignee and `Executor` cleared; any other keeps its `Stage`. All move to the next milestone or to none
