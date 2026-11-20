@@ -14,4 +14,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - The standard states the paths of the issue forms (`.github/ISSUE_TEMPLATE/`) and of the field configuration (`config/issue-fields.yml`) in the `.github` repository (#7)
 - Each signer writes its own line of the Approval section: the preparer "Prepared by", the Approver "Approved by", the same in D22 and in step 4 (#8)
 - Startable issues with the same milestone and `Priority` are ordered by lowest issue number, so the first startable issue is always one issue (#23)
+- Branch commits carry the identity of the GitHub account and are signed off with it, and the executor checks and sets the identity before its first commit (#24)
 - `Reviewed by` is written only when the Reviewer approves, never on a rejection, so a later round overwrites no earlier name (#9)
