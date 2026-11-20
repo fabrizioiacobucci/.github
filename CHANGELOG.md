@@ -17,3 +17,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Branch commits carry the identity of the GitHub account and are signed off with it, and the executor checks and sets the identity before its first commit (#24)
 - `Reviewed by` is written only when the Reviewer approves, never on a rejection, so a later round overwrites no earlier name (#9)
 - `Executor` and `Reviewed by` options each name one person or one agent seat: the option "Owner" is the owner of the account, and D11 no longer uses the word for the assignee (#11)
+- The standard states that the forms, the configuration and the documents in force are those on `develop` of the `.github` repository, and that a change takes effect when merged into `develop`, not at release (#13)
