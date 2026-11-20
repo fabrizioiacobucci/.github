@@ -1,7 +1,7 @@
 # GitHub Workflow Standard: Steps
 
 Version: 0.1 (core)
-Last update: 2026-11-19
+Last update: 2026-11-20
 Decisions and constraints: `github-workflow.md`
 
 Version 0.1 holds the frozen core (D31) on a REST-only channel (D10). Text under "Extensions" is not valid: never apply it until it has been executed (D32).
@@ -73,7 +73,8 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
 - Does: chooses the first startable issue, then sets `Executor` to its own name, assigns the issue and sets `Stage` to In Progress
 - Leaves untouched: milestone, Priority, type
 - Result: the issue is In Progress, with an assignee and an `Executor`
-- Claim order: write `Executor` first, read the issue again, go on only if `Executor` still carries your own name. Otherwise withdraw without touching anything else and take the next issue
+- Claim order: read the issue just before the claim and skip it if `Executor` is set, since another executor holds it. Write `Executor` first, read the issue again, go on only if `Executor` still carries your own name. Then assign the issue, set `Stage`, and read it once more with the same test
+- Lost claim: an executor whose test fails withdraws and writes nothing more on that issue. `Executor`, assignee and `Stage` are the winner's, and what the loser already wrote in assignee and `Stage` carries the same values. It takes the next issue
 - An executor with at least one issue In Progress picks up nothing new. Waiting and In Review do not count, so an issue coming back from Waiting may leave an executor with more than one In Progress
 
 ### 6. Work
@@ -85,6 +86,7 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
 - Leaves untouched: milestone, Priority
 - Result: the work is complete on the branch, ready for a pull request
 - One branch per issue, created with `git` from `develop` and pushed, with the flat name `<number>-<short-title>`. No prefix for type, version or theme. No branch without an issue. The pull request links it to the issue (step 7). The branch is deleted automatically after the merge (D34)
+- Claim check: before the first push of the branch, the executor reads the issue once more. If `Executor` no longer carries its own name, the claim is lost and it withdraws as in step 5
 - Identity: before the first commit, the executor reads `git var GIT_COMMITTER_IDENT`. If it is not the identity of D39, the executor sets `user.name` and `user.email` in the clone's git config. Every commit is made with `git commit -s`
 - Work found along the way: what the completion criterion needs is done inside the issue; everything else becomes a new issue that goes through triage. If the new issue blocks the current one, the executor pushes the branch, declares "blocked by", sets `Stage` back to Ready and clears `Executor` and assignee
 - The executor never edits the Design or the completion criterion of its own issue. Any change to the completion criterion is substantial; a Design change is substantial when the approach or the parts touched change. A substantial change sends the issue back to Accepted, with `Executor` and assignee cleared: on a Feature or Bug the Approval section is emptied and a new approval is needed; a Task is set back to Ready by someone other than the executor
