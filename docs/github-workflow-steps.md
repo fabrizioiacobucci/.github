@@ -101,7 +101,7 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
   - Reject: the reasons go in the pull request and `Stage` goes back to In Progress
 - Leaves untouched: Design, completion criterion, milestone
 - Result: the work is approved, or back with the executor with reasons
-- The Reviewer writes its own name in `Reviewed by` when it gives the verdict
+- The Reviewer writes its own name in `Reviewed by` when it approves (D27)
 - Work that leaves no file: the executor writes the outcome in a comment and sets `Stage` to In Review; the Reviewer judges the comment and closes the issue by hand as completed. Work that produces a document goes through a pull request like code
 
 ### 8. Closure
