@@ -117,7 +117,7 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
 
 - Who: whoever holds the planning mandate. The tag and the release are made by a person: a cloud agent session cannot create releases (REST answers 403), and only a person making them has been executed (D32)
 - Does: once every issue of the milestone is closed or moved as a leftover, in this order
-  - Creates in the milestone the Task "Release vX.Y.Z", then accepts it and sets it to Ready with a Priority, as a declared act. From there it goes through steps 5 to 8 like any other. Its pull request, into `develop`, renames the "Unreleased" section of `CHANGELOG.md` to the version with its date and adds a new empty "Unreleased" section above it
+  - Creates in the milestone the Task "Release vX.Y.Z", then accepts it and sets it to Ready with a Priority. From there it goes through steps 5 to 8 like any other. Its pull request, into `develop`, renames the "Unreleased" section of `CHANGELOG.md` to the version with its date and adds a new empty "Unreleased" section above it
   - A person creates the tag `vX.Y.Z` on the commit of that merge
   - A person publishes the release with that changelog section as notes
   - Closes the milestone
@@ -164,7 +164,7 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
 
 ## Rules
 
-- Creating and accepting are two distinct acts, even for the same actor. Whoever creates does not set `Stage`; with a triage mandate, triage is a separate, declared act
+- Creating and accepting are two distinct acts, even for the same actor. Whoever creates does not set `Stage`; with a triage mandate, triage is a separate act
 - No draft items in the Project: every piece of work is born as an issue in a repository
 - Priority is mandatory for every accepted issue. Startable issues are taken in the order of D21
 - Board views filter on open issues (`is:open`): a closed issue keeps its last `Stage` value
