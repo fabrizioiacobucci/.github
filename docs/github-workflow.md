@@ -1,7 +1,7 @@
 # GitHub Workflow Standard: Decisions
 
 Version: 0.1 (core)
-Last update: 2026-11-19
+Last update: 2026-11-20
 Workflow steps: `github-workflow-steps.md`
 
 Version 0.1 holds the frozen core (D31) on a REST-only channel (D10). Text under "Extensions" is not valid: never apply it until it has been executed (D32).
@@ -28,7 +28,7 @@ Version 0.1 holds the frozen core (D31) on a REST-only channel (D10). Text under
 | D8 | `Stage` is a single-select issue field holding the progress of an open issue, used as the board column field. "Closed" stays the native issue state |
 | D9 | Empty `Stage` = never examined. Triage is the act of setting it. D5 applies to accepted issues only |
 | D10 | Baseline channel: the REST API through `gh api`, plus `git`, from a shell. No GraphQL and no `gh issue` or `gh pr` subcommands, so the same commands work in local and cloud sessions. MCP is optional. Agents never use the Project: it is fed by auto-add |
-| D11 | One datum, one home. Kind of work → issue type. Priority → Priority issue field. Version → milestone. Owner → assignee. Deadline → milestone due date |
+| D11 | One datum, one home. Kind of work → issue type. Priority → Priority issue field. Version → milestone. Assigned account → assignee. Deadline → milestone due date |
 | D12 | Execution order → "blocked by" dependencies |
 | D13 | Labels only for cross-cutting themes (area, component). Never for type, priority, `Stage` or version |
 | D14 | No Effort, Start Date or Target Date field is created until a decision needs it |
@@ -43,7 +43,7 @@ Version 0.1 holds the frozen core (D31) on a REST-only channel (D10). Text under
 | D23 | Names and values of fields are written in Title Case, identical in GitHub and in these documents |
 | D24 | The standard lives in the account's public `.github` repository: rules, steps, scripts, configuration and the issue forms, which apply by default to every repository of the account |
 | D25 | `Priority` is a single-select issue field with values Urgent, High, Medium, Low |
-| D26 | `Executor` is a single-select issue field with one option per person and per agent seat. There are at least two agent seats, and an agent started with a clean context signs with a seat different from the one whose work it checks, so that "different" is always visible in the names. It says who is working; the assignee stays the GitHub account. It is set at pick-up by the main session, never by a subagent, and cleared when the issue goes back to Ready or Accepted |
+| D26 | `Executor` is a single-select issue field with one option per person and per agent seat. There are at least two agent seats, and an agent started with a clean context signs with a seat different from the one whose work it checks, so that "different" is always visible in the names. It says who is working; the assignee stays the GitHub account. The option "Owner" names the owner of the account, one person, and has no other meaning in the standard. It is set at pick-up by the main session, never by a subagent, and cleared when the issue goes back to Ready or Accepted |
 | D27 | `Reviewed by` is a single-select issue field with the same options as `Executor`, set when the review verdict is given. `Reviewed by` and `Executor` must differ |
 | D28 | Branch model: `develop` is the default branch. An issue's pull request targets `develop` |
 | D29 | A pull request title follows Conventional Commits and ends with the issue number: `<type>(<scope>): <description> (#<issue>)`. Feature → `feat`, Bug → `fix`, Task → `chore`, `refactor`, `docs`, `test`, `build`, `ci` or `perf`; `!` marks a breaking change. The squash commit carries exactly that title, with no pull request number: the issue is the single reference. Its body is defined by D37 |

@@ -15,3 +15,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Each signer writes its own line of the Approval section: the preparer "Prepared by", the Approver "Approved by", the same in D22 and in step 4 (#8)
 - Startable issues with the same milestone and `Priority` are ordered by lowest issue number, so the first startable issue is always one issue (#23)
 - Branch commits carry the identity of the GitHub account and are signed off with it, and the executor checks and sets the identity before its first commit (#24)
+- `Executor` and `Reviewed by` options each name one person or one agent seat: the option "Owner" is the owner of the account, and D11 no longer uses the word for the assignee (#11)
