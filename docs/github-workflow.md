@@ -58,6 +58,23 @@ Version 0.1 holds the frozen core (D31) on a REST-only channel (D10). Text under
 | D38 | The repository settings the standard needs are listed, with their values, in "Required repository settings". A repository is checked against that table with a single read of `GET /repos/<owner>/<repo>`. A different value is a defect of the repository, reported as an issue |
 | D39 | Branch commits carry the identity of the GitHub account, as author and committer (`user.name` is the account login, `user.email` its email), and are signed off with it. Step 6 says how it is set |
 
+## Design requirements
+
+What a rule of the standard must meet. The Reviewer applies them to every change of the standard.
+
+- No signal relies on fixed lines in comments or on free text (called R7 in #17). What a rule reads is a field, a form section or other structured data, which can be checked again when it changes. Comments carry reasons, questions and outcomes for people to read
+- A mechanism never executed is not in the core: it is an extension or an open issue until it has been executed once (D31, D32)
+
+## Rejected ideas
+
+Ideas proposed and ruled out, with the reason, so that they are not proposed again. An idea only postponed is not here: it is an open issue (for example #17) or an extension.
+
+| Idea | Reason | Source |
+|------|--------|--------|
+| A fixed line in a comment used as a signal, for example `Priority fact:` and `Priority reassessed:` lines that trigger a reassessment of `Priority` | It relies on fixed lines in comments, against the first design requirement. The need stays open in #17, to be met with fields or structured data | Review of #12, round 3 |
+
+Other ideas are ruled out inside the decision that excludes them: D5, D10, D13, D14, D15 and D18.
+
 ## Platform constraints
 
 - Milestones are repository-scoped
