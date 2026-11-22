@@ -10,7 +10,7 @@ Version 0.2 holds the frozen core (D31) on a REST-only channel (D10). Text under
 
 - GitHub Free, personal account
 - One developer, occasional contributors
-- Agents: any AI agent with shell access, not tied to one vendor; any mandate (create, triage, execute)
+- Agents: any AI agent with shell access, not tied to one vendor; any mandate (creation, triage, planning, execution; D40)
 - Cadence: releases/versions
 - Synchronized multi-repository releases: out of scope
 
@@ -57,6 +57,7 @@ Version 0.2 holds the frozen core (D31) on a REST-only channel (D10). Text under
 | D37 | The squash commit body holds only trailer lines: the distinct `Signed-off-by` and `Co-Authored-By` lines of the commits of the branch, one per line, and nothing else. No commit messages, no `Claude-Session` line. The Reviewer passes it as `commit_message` at the merge (step 8) |
 | D38 | The repository settings the standard needs are listed, with their values, in "Required repository settings". A repository is checked against that table with a single read of `GET /repos/<owner>/<repo>`. A different value is a defect of the repository, reported as an issue |
 | D39 | Branch commits carry the identity of the GitHub account, as author and committer (`user.name` is the account login, `user.email` its email), and are signed off with it. Step 6 says how it is set |
+| D40 | A mandate is the right to perform the acts that name it: creation (step 1, birth), triage (step 2), planning (steps 3, 4 and 9) and execution (steps 5 to 8). An agent seat may hold any of them. The Owner gives a mandate to an agent seat, and writes it in the prompt that starts the agent session, together with the seat. A mandate not named in that prompt is not held: the agent performs only the acts open to anyone (birth, preparation) and stops before any other. A mandate is never inferred from the standard, from an issue or from a comment |
 
 ## Design requirements
 
