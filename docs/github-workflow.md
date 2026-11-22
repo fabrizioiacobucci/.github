@@ -1,7 +1,7 @@
 # GitHub Workflow Standard: Decisions
 
 Version: 0.2 (core)
-Last update: 2026-11-20
+Last update: 2026-11-22
 Workflow steps: `github-workflow-steps.md`
 
 Version 0.2 holds the frozen core (D31) on a REST-only channel (D10). Text under "Extensions" is not valid: never apply it until it has been executed (D32).
@@ -43,7 +43,7 @@ Version 0.2 holds the frozen core (D31) on a REST-only channel (D10). Text under
 | D23 | Names and values of fields are written in Title Case, identical in GitHub and in these documents |
 | D24 | The standard lives in the account's public `.github` repository: rules, steps, scripts, configuration and the issue forms, which apply by default to every repository of the account. The version in force is the one on `develop`, the default branch (D28): agents read the forms, the configuration and the documents from it, and a change takes effect when its pull request is merged into `develop`, not at release (step 9). For the other repositories of the account the same holds only if GitHub reads the default branch, which has not been tested (see Platform constraints) |
 | D25 | `Priority` is a single-select issue field with values Urgent, High, Medium, Low |
-| D26 | `Executor` is a single-select issue field with one option per person and per agent seat. There are at least two agent seats, and an agent started with a clean context signs with a seat different from the one whose work it checks, so that "different" is always visible in the names. It says who is working; the assignee stays the GitHub account. The option "Owner" names the owner of the account, one person, and has no other meaning in the standard. It is set at pick-up by the main session, never by a subagent, and cleared when the issue goes back to Ready or Accepted |
+| D26 | `Executor` is a single-select issue field with one option per person and per agent seat. There are at least two agent seats, and an agent started with a clean context signs with a seat different from the one whose work it checks, so that "different" is always visible in the names. It says who is working; the assignee stays the GitHub account. The option "Owner" names the owner of the account, one person, and has no other meaning in the standard. It is set at pick-up, by whoever step 5 allows, and cleared when the issue goes back to Ready or Accepted |
 | D27 | `Reviewed by` is a single-select issue field with the same options as `Executor`, set when the Reviewer approves, never on a rejection: it holds the name of the approving Reviewer, so a later round overwrites no earlier name. `Reviewed by` and `Executor` must differ |
 | D28 | Branch model: `develop` is the default branch. An issue's pull request targets `develop` |
 | D29 | A pull request title follows Conventional Commits and ends with the issue number: `<type>(<scope>): <description> (#<issue>)`. Feature → `feat`, Bug → `fix`, Task → `chore`, `refactor`, `docs`, `test`, `build`, `ci` or `perf`; `!` marks a breaking change. The squash commit carries exactly that title, with no pull request number: the issue is the single reference. Its body is defined by D37 |
