@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- A session started by another session (a subagent, or a thread session started by a project's chat) may pick up an issue under two conditions, no other executing session of the same seat and the issue left in a state step 5 allows before the session ends, checked by the session that started it; D26 points to step 5 for who may set `Executor` (#48)
+
 ## [0.2.0] - 2026-11-20
 
 ### Fixed

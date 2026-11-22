@@ -1,7 +1,7 @@
 # GitHub Workflow Standard: Steps
 
 Version: 0.2 (core)
-Last update: 2026-11-20
+Last update: 2026-11-22
 Decisions and constraints: `github-workflow.md`
 
 Version 0.2 holds the frozen core (D31) on a REST-only channel (D10). Text under "Extensions" is not valid: never apply it until it has been executed (D32).
@@ -69,13 +69,15 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
 
 ### 5. Pick-up
 
-- Who: whoever holds the execution mandate (person or agent main session, never a subagent)
+- Who: whoever holds the execution mandate: a person, an agent main session, or a started session (a session started by another session: a subagent, or a thread session started by a project's chat) under the conditions below
 - Does: chooses the first startable issue, then sets `Executor` to its own name, assigns the issue and sets `Stage` to In Progress
 - Leaves untouched: milestone, Priority, type
 - Result: the issue is In Progress, with an assignee and an `Executor`
 - Claim order: read the issue just before the claim and skip it if `Executor` is set, since another executor holds it. Write `Executor` first, read the issue again, go on only if `Executor` still carries your own name. Then assign the issue, set `Stage`, and read it once more with the same test
 - Lost claim: an executor whose test fails withdraws and writes nothing more on that issue. `Executor`, assignee and `Stage` are the winner's, and what the loser already wrote in assignee and `Stage` carries the same values. It takes the next issue
 - An executor with at least one issue In Progress picks up nothing new. Waiting and In Review do not count, so an issue coming back from Waiting may leave an executor with more than one In Progress
+- Started session: it picks up only if both conditions hold. First, no other executing session signing the same seat runs at the same time: whoever starts sessions starts at most one executing session per seat at a time. Second, before it ends it leaves the issue In Review as in step 7, Waiting as in step 6, or back at Ready or Accepted with `Executor` and assignee cleared as in step 6; or In Progress only when its pull request is already open
+- Check of the second condition: the session that started it reads the issue after it ends, directly or through a read-only session it starts for that read. If the issue is still In Progress with no pull request open, that session gives it up as in step 6, or has another started session with the same seat do so. If its pull request is open, that session reports it to a person, who decides
 
 ### 6. Work
 
