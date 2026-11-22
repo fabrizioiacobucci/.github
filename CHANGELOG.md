@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- The standard states how the type of an existing issue is changed at triage: `PATCH` on the issue with a `type` field, read back after the write (#46)
 - The standard states which mandates an agent may hold (creation, triage, planning, execution), that the Owner gives them to an agent seat in the prompt that starts its session, and that an agent without a named mandate performs only the acts open to anyone (D40) (#41)
 
 ## [0.2.0] - 2026-11-20
