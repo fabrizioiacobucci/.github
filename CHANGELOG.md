@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - A session started by another session (a subagent, or a thread session started by a project's chat) may pick up an issue under two conditions, no other executing session of the same seat and the issue left in a state step 5 allows before the session ends, checked by the session that started it; D26 points to step 5 for who may set `Executor` (#48)
 
+### Fixed
+
+- The standard states which mandates an agent may hold (creation, triage, planning, execution), that the Owner gives them to an agent seat in the prompt that starts its session, and that an agent without a named mandate performs only the acts open to anyone (D40) (#41)
+
 ## [0.2.0] - 2026-11-20
 
 ### Fixed
