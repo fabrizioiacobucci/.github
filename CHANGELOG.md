@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- The standard states the HTTP method and the request body of an issue field write: `POST`, with the field id and the option name; never `PUT` (#45)
 - The standard says when the preparer signs "Prepared by" (when preparation is finished), that an Accepted issue with "Prepared by" signed and "Approved by" empty awaits approval, and the issue forms and the "Issue forms" table say the same (#43)
 - The standard says what counts as a mechanism and as executed, that the rule holds for every change of the core, and that the Reviewer does not approve a new mechanism without a stated execution before the merge (#42)
 - The standard records, as a platform constraint not yet tested on this account, how the type of an existing issue is changed (#46)
