@@ -37,7 +37,7 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
 
 - Who: whoever holds the triage mandate (person or agent)
 - Does: takes an issue with empty `Stage` and picks one outcome
-  - Accept: fixes the type if needed (`gh api -X PATCH repos/<owner>/<repo>/issues/<n> -f type=<Type>`, then reads the type back), sets Priority by the Priority criteria, sets `Stage` to Accepted. A Task with a clear "Done when" goes straight to Ready
+  - Accept: fixes the type if needed, sets Priority by the Priority criteria, sets `Stage` to Accepted. A Task with a clear "Done when" goes straight to Ready
   - Reject: closes as "not planned", with the reason in a comment
   - Duplicate: copies anything new into a comment on the surviving issue, then closes it through REST with `state_reason` duplicate and `duplicate_issue_id` set to the surviving issue. The more complete issue survives
   - Suspend: sets `Stage` to Needs Info and asks the question in a comment
