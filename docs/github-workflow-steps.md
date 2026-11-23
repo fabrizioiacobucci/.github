@@ -45,6 +45,7 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
 - Result: the issue is accepted, closed, or waiting for clarification
 - A wanted Task with an unclear "Done when" is Accepted, not Ready: the triager writes the criterion, or the issue goes to Waiting until the author answers. Needs Info is for an issue that cannot be decided at all; Waiting is for work already wanted
 - Triage queue, oldest first: open issues with empty `Stage`, then Needs Info issues commented since they entered it. Until a script exists: people read it from the board (the column with no value and the Needs Info column); agents list the open issues through REST, which returns their field values, and filter locally
+- Read before writing: the triager notes the issue's open state, `Stage` and `Priority` when it reads the queue, and reads the issue again just before its first write on it. If the issue is closed, or `Stage` or `Priority` differs from what the queue showed, another seat has triaged it or is triaging it: the triager writes nothing more on that issue and takes the next one. Reading again does not make the write conditional (see "Platform constraints"): the case where two seats read the same values before either writes is a known limit, like the claim of step 5 (#30)
 
 ### 3. Version opening
 
