@@ -1,7 +1,7 @@
 # GitHub Workflow Standard: Steps
 
 Version: 0.2 (core)
-Last update: 2026-11-22
+Last update: 2026-11-23
 Decisions and constraints: `github-workflow.md`
 
 Version 0.2 holds the frozen core (D31) on a REST-only channel (D10). Text under "Extensions" is not valid: never apply it until it has been executed (D32).
@@ -62,7 +62,7 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
 - Does: takes an Accepted issue and performs up to four acts, in any order except the last
   - Version: assigns the milestone if the target version is known; otherwise the issue stays in the backlog
   - Order: declares "blocked by" dependencies
-  - Preparation: writes the Design section (Feature) or reproduces the defect (Bug)
+  - Preparation: writes the Design section (Feature) or reproduces the defect (Bug), then signs "Prepared by" (D22)
   - Approval: the Approver writes its own line (D22) and sets `Stage` to Ready. This act closes preparation
 - Leaves untouched: assignee
 - Result: the issue is Ready, with or without a milestone
@@ -133,8 +133,8 @@ The step numbers are not a strict sequence. Steps 1, 2, 4, 5, 6, 7, 8 are the li
 
 | Type | Required sections | Optional sections |
 |------|-------------------|-------------------|
-| Feature | Goal; Acceptance criteria | Design (required before Ready); Out of scope; Approval (last, filled at Ready) |
-| Bug | What happens; What should happen; Steps to reproduce; Observed in | Approval (last, filled at Ready) |
+| Feature | Goal; Acceptance criteria | Design (required before Ready); Out of scope; Approval (last, "Prepared by" filled when preparation ends, "Approved by" at Ready) |
+| Bug | What happens; What should happen; Steps to reproduce; Observed in | Approval (last, "Prepared by" filled when preparation ends, "Approved by" at Ready) |
 | Task | What to do; Done when | Context |
 
 - "Observed in" is free text: a release, or a branch and commit

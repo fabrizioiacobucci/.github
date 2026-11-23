@@ -38,7 +38,7 @@ body:
     id: approval
     attributes:
       label: Approval
-      description: Leave the names empty. They are filled when the issue moves to Ready, with names from the Executor options.
+      description: Leave the names empty. "Prepared by" is filled when preparation ends and "Approved by" when the issue moves to Ready, with names from the Executor options.
       value: |
         Prepared by:
         Approved by:
