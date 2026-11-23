@@ -65,6 +65,9 @@ What a rule of the standard must meet. The Reviewer applies them to every change
 
 - No signal relies on fixed lines in comments or on free text (called R7 in #17). What a rule reads is a field, a form section or other structured data, which can be checked again when it changes. Comments carry reasons, questions and outcomes for people to read
 - A mechanism never executed is not in the core: it is an extension or an open issue until it has been executed once (D31, D32)
+  - A mechanism is a rule, a field, a form section or a procedure that an actor applies and whose result can be observed. A change that only rewords, corrects or removes text, and changes no outcome of any act, brings none
+  - Executed means run at least once before the merge, on the pull request's branch or in a test repository. The pull request states what was run and what was observed. Running an extension in such a test does not apply it
+  - The rule holds for every change of the core, not only for text moved from "Extensions". The Reviewer does not approve a pull request that brings in a mechanism without that outcome. What cannot be executed before the merge is removed from the pull request and stays an open issue
 
 ## Rejected ideas
 
