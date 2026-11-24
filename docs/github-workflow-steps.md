@@ -1,10 +1,10 @@
 # GitHub Workflow Standard: Steps
 
-Version: 0.2 (core)
-Last update: 2026-11-23
+Version: 0.3 (core)
+Last update: 2026-11-24
 Decisions and constraints: `github-workflow.md`
 
-Version 0.2 holds the frozen core (D31) on a REST-only channel (D10). Text under "Extensions" is not valid: never apply it until it has been executed (D32).
+Version 0.3 holds the frozen core (D31) on a REST-only channel (D10). Text under "Extensions" is not valid: never apply it until it has been executed (D32).
 
 "Step" names a point of the workflow. `Stage` names the issue field. Never mix the two.
 
